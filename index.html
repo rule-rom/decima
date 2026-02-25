@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            const locale = navigator.language || navigator.userLanguage;
+            
+            if (locale.toLowerCase().includes('ru')) {
+                window.location.replace('./ru/');
+            } else {
+                window.location.replace('./en/');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting... / Перенаправление...</p>
+</body>
+</html>

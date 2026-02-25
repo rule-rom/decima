@@ -1,0 +1,32 @@
+# Rule-ROM: Global Registry of Executable Intentions 📜🛡️
+
+**We translate AI from the realm of probabilities to the realm of executable Intent.**
+
+## 🏛️ About
+
+Rule-ROM is an expandable federation of technical standards. We create a universal control bus — from C source code to neuromorphic silicon and industrial automation.
+
+## 🌐 Federation Domains
+
+| Domain | Purpose | URL |
+|--------|---------|-----|
+| 🌿 **C-SAFE** | Legacy Immunization: Clang AST + Garden-Core | https://c-safe.rulerom.com |
+| 🧠 **Decima** | Neuromorphic substrate and bus specifications | https://decima.rulerom.com |
+| 🧪 **Bakery** | Methodology for "baking" deterministic personalities | https://bakery.rulerom.com |
+| 🔈 **Audrey** | Vacuum electronics standards and frequency physics | https://audrey.rulerom.com |
+
+## 🛡️ Enforcement Protocol
+
+- **Verification:** Babashka (Clojure) validation of Clang AST
+- **Law:** If `AST != Intent`, code is **pruned**
+
+## 📧 Contact
+
+- **General:** intent@rulerom.com
+- **Standards:** access@rulerom.com
+
+## 🔗 Links
+
+- Garden-Core: https://intent-garden.org
+- Decima8: https://decima8.org
+- Support: https://boosty.to/intentgarden

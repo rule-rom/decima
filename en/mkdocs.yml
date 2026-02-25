@@ -1,0 +1,43 @@
+site_name: DECIMA-8 🧠 — Neuromorphic Engine
+site_url: https://decima.rulerom.com
+theme:
+  name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+  custom_dir: overrides
+
+plugins:
+  - search
+  - mermaid2
+
+extra_css:
+  - css/mermaid.css
+
+extra:
+  analytics:
+    provider: yandex
+    property: 107005401
+
+nav:
+  - '📖 Home':
+    - 'Overview': index.md
+    - 'IDE': tools/ide.md
+
+  - '🏗 Architecture':
+    - 'Tiles': arch/tiles.md
+    - 'BUS16': arch/bus.md
+    - 'READ/WRITE Phases': arch/phase.md
+    - 'Routing': arch/routing.md
+
+  - '📋 Specification':
+    - 'Bake TLV': spec/bake.md
+    - 'Protocol': spec/protocol.md
+
+  - '🔌 Integration':
+    - 'UDP Protocol': integration/udp.md
+
+  - '💎 Ecosystem': ecosystem.md

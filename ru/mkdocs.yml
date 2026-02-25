@@ -1,0 +1,43 @@
+site_name: DECIMA-8 🧠 — Нейроморфный Движок
+site_url: https://decima.rulerom.com
+theme:
+  name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+  custom_dir: overrides
+
+plugins:
+  - search
+  - mermaid2
+
+extra_css:
+  - css/mermaid.css
+
+extra:
+  analytics:
+    provider: yandex
+    property: 107005401
+
+nav:
+  - '📖 Главная':
+    - 'Обзор': index.md
+    - 'IDE': tools/ide.md
+
+  - '🏗 Архитектура':
+    - 'Тайлы': arch/tiles.md
+    - 'Шина BUS16': arch/bus.md
+    - 'Фазы READ/WRITE': arch/phase.md
+    - 'Маршрутизация': arch/routing.md
+
+  - '📋 Спецификация':
+    - 'Bake TLV': spec/bake.md
+    - 'Протокол': spec/protocol.md
+
+  - '🔌 Интеграция':
+    - 'UDP Protocol': integration/udp.md
+
+  - '💎 Экосистема': ecosystem.md

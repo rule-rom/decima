@@ -1,0 +1,66 @@
+# 🌿 Decima Ecosystem
+
+> **Neuromorphic engine and surroundings**
+
+---
+
+## 🧠 Decima-8
+
+**Neuromorphic engine (emulator/FPGA/ASIC)**
+
+- Deterministic rhythm for neuromorphic computing
+- Level16 (0..15) on 8 data lanes
+- Tile = minimal programmable entity
+- BUS16 (8 lane) with honest summing
+- Activation graph through neighbors
+- Range fuse [thr_lo16..thr_hi16]
+- Decay-to-zero (pulls to 0, never jumps over)
+
+**Documentation:** [decima.rulerom.com](https://decima.rulerom.com)
+
+---
+
+## 🛠️ Decima IDE
+
+**Visual environment for baking personalities**
+
+- Configure tiles, weights, thresholds
+- Real-time swarm visualization
+- Auto-Bake under pattern
+- Recognition via EV_FLASH
+
+---
+
+## 🏛️ Swarm Council
+
+**16 elders in swarm core, 256 industrialists in global council**
+
+- Domains 0..15 = elders
+- Priority on collision
+- AutoReset-by-Fire
+
+---
+
+## 🏠 Nomos
+
+**Sovereign financing and distributed swarm maintenance**
+
+---
+
+## 🔈 Audrey
+
+**Warm soul. Place for embodying things that will outlive the era**
+
+---
+
+## 🔗 Related Projects
+
+| Project | Description |
+|---------|-------------|
+| **Intent-Garden** | Deterministic C/C++ code verification engine |
+| **Rule-Rom** | Global library of intentions |
+| **LibWUI** | High-performance tools for industrial C++ |
+
+---
+
+**Bake the Future. Build the Substrate.** 🛠️⚡️
