@@ -17,7 +17,7 @@
 | **priority8** | u8 | 0..255 | Collision priority |
 | **pattern_id16** | u16 | 0..32767 | Pattern ID |
 | **routing_flags16** | u16 | 10 bits | Activation directions |
-| **W[8][8]** | SignedWeight5 | mag4+sign1 | Weight matrix 8×8 |
+| **W[8][8]** | SignedWeight5 | mag3(0..7)+sign1 | Weight matrix 8×8 (-7..+7) |
 | **reset_on_fire_mask16** | u16 | 16 bits | Auto-reset domains on fire |
 
 ### Runtime
@@ -214,11 +214,12 @@ locked == 1 ⇒ thr_lo16 <= thr_cur16 <= thr_hi16
 
 ## 📐 SignedWeight5
 
-Weight: mag4 ∈ [0..15], sign1 ∈ {0,1} (1="+", 0="−")
+Weight: mag3∈[0..7], sign1∈{0,1} (1="+", 0="−").
 
 ```
-mul_signed_raw(a, mag4, sign1) = (sign1 ? +1 : -1) * (a * mag4)
-# a ∈ [0..15] → range [-225..+225]
+mul_signed_raw(a, mag, sign) = (sign ? +1 : -1) * (a * mag)
+# a∈[0..15], mag∈[0..7] → [-105..+105] per term
+# 8 terms per row → [-840..+840] per row
 ```
 
 ---
