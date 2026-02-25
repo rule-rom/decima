@@ -57,9 +57,9 @@ Platform for publishing and monetizing author-created personalities.
 
 | Project | Description | URL |
 |---------|-------------|-----|
-| **Intent-Garden** | Deterministic C/C++ code verification engine | https://intent-garden.org |
-| **Rule-Rom** | Global library of intentions | https://rulerom.com |
-| **LibWUI** | High-performance tools for industrial C++ | https://libwui.org |
+| **Intent-Garden** | Deterministic C/C++ code verification engine | [c-safe.rulerom.com](https://c-safe.rulerom.com) |
+| **Rule-Rom** | Global library of intentions | [rulerom.com](https://rulerom.com) |
+| **LibWUI** | High-performance tools for industrial C++ | [libwui.org](https://libwui.org) |
 
 ---
 

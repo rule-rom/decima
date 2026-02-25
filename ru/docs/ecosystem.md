@@ -57,9 +57,9 @@
 
 | Проект | Описание | URL |
 |--------|----------|-----|
-| **Intent-Garden** | Детерминированный движок верификации C/C++ кода | https://intent-garden.org |
-| **Rule-Rom** | Глобальная библиотека намерений | https://rulerom.com |
-| **LibWUI** | Высокопроизводительные инструменты для промышленного C++ | https://libwui.org |
+| **Intent-Garden** | Детерминированный движок верификации C/C++ кода | [c-safe.rulerom.com](https://c-safe.rulerom.com) |
+| **Rule-Rom** | Глобальная библиотека намерений | [rulerom.com](https://rulerom.com) |
+| **LibWUI** | Высокопроизводительные инструменты для промышленного C++ | [libwui.org](https://libwui.org) |
 
 ---
 
