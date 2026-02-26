@@ -28,8 +28,8 @@ The Decima-8 specification is open for implementation. We welcome the creation o
 
 The system operates like an irrigation network with a rigid clock.
 
-- **PHASE_READ:** Data ("water") fills the common VSB bus. All tiles simultaneously access this stream. This is the moment of maximum entropy.
-- **PHASE_WRITE:** Tiles that "recognized" the input pattern latch and transmit their ID to a dedicated channel, or — if BUS_W flag is set — output their weight back to the bus for the next cascade.
+- **PHASE_READ:** Data ("water") fills the common VSB bus. All tiles simultaneously access this stream, but only those with BUS_R flag or a locked ancestor can read. If an ancestor loses FUSE (latched state) — by decay or from competitors in the domain — descendants also lose access. The input stream pours through weights into the accumulator, filling it or driving it negative.
+- **PHASE_WRITE:** Tiles having accumulator value within the threshold defined by the personality architecture latch, outputting the pattern or opening bus access to their descendants in subsequent ticks.
 
 ### 2. Sieving Mechanics
 
