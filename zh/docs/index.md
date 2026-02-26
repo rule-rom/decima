@@ -60,6 +60,7 @@ Systolic 筛网将市场噪音、视频流或音频信号转换为 **Pattern ID*
 | **双向 VSB** | PHASE_READ: Conductor 设置输入; PHASE_WRITE: Island 驱动总线 |
 | **Tile = 最小实体** | RuleROM 直接寻址图块 |
 | **BUS16 (8 lane)** | 所有数据通过公共总线，邻居不传输数据 |
+| **专用 Pattern ID 线路** | 独立 uint16 通道用于模式输出，不堵塞主总线 |
 | **激活图 (Gating)** | 邻居仅形成逻辑选通 (Strobe) 以允许从公共总线读取 |
 | **范围熔丝 (Latch)** | 硬件级锁存：仅当电平处于 [lo..hi] 范围内时激活 |
 | **Decay-to-Zero** | 累加器在每个周期确定性衰减至 0，无残留状态 |

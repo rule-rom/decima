@@ -60,6 +60,7 @@ The systolic sieve transforms market noise, video streams, or audio signals into
 | **Bidirectional VSB** | Conductor sets input before READ, Island drives in WRITE |
 | **Tile = minimal entity** | RuleROM addresses tiles directly |
 | **BUS16 (8 lane)** | All data through common bus, neighbors don't transfer data |
+| **Dedicated Pattern ID Lane** | Separate uint16 channel for pattern output, doesn't clog main bus |
 | **Activation graph** | Neighbors form relay for BUS reading |
 | **Range fuse** | LOCK if thr_cur16 ∈ [thr_lo16..thr_hi16] |
 | **Decay-to-Zero** | Accumulator decays to 0, never jumps over |
