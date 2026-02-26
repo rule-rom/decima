@@ -3,54 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DECIMA-8 — Redirecting...</title>
-    <script>
-        (function() {
-            const locale = navigator.language || navigator.userLanguage;
-            const localeLower = locale.toLowerCase();
-
-            // Language preferences in order
-            if (localeLower.includes('zh') || localeLower.includes('cn') || localeLower.includes('tw')) {
-                // Chinese (Simplified or Traditional)
-                window.location.replace('./zh/');
-            } else if (localeLower.includes('ru')) {
-                // Russian
-                window.location.replace('./ru/');
-            } else {
-                // Default to English for all other locales
-                window.location.replace('./en/');
-            }
-        })();
-    </script>
+    <title>Rule-ROM Federation 🏛️</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #1a1a2e;
-            color: #eee;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 { color: #00d9ff; }
-        .links { margin-top: 30px; }
-        .links a {
-            display: block;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0e0e0;
+            padding: 1rem;
+        }
+        .container {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .loading {
+            font-size: 1.2rem;
+            color: #00d9ff;
+            margin: 1.5rem 0;
+        }
+        .spinner {
+            border: 3px solid #1a1a2e;
+            border-top: 3px solid #00d9ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .lang-select {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            padding: 1rem 2rem;
+            border: 2px solid #00d9ff;
+            background: rgba(0,217,255,0.1);
+            color: #00d9ff;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .lang-btn:hover {
+            background: #00d9ff;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+        }
+        .domains {
+            margin-top: 2rem;
+            text-align: left;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        .domains h3 {
+            margin-bottom: 1rem;
+            color: #00ff88;
+            font-size: 1.3rem;
+        }
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .domain-item {
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border-left: 3px solid #00d9ff;
+        }
+        .domain-item a {
             color: #00d9ff;
             text-decoration: none;
-            margin: 10px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
-        .links a:hover { text-decoration: underline; }
+        .domain-item a:hover {
+            text-decoration: underline;
+        }
+        .domain-item p {
+            color: #888;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .contact {
+            margin-top: 2rem;
+            color: #888;
+        }
+        .contact a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <h1>🧠 DECIMA-8</h1>
-    <p>Redirecting to documentation... / Перенаправление на документацию... / 重定向到文档...</p>
-    
-    <div class="links">
-        <p>Or choose manually / Или выберите вручную / 或手动选择:</p>
-        <a href="./ru/">🇷🇺 Русская версия</a>
-        <a href="./en/">🇬🇧 English version</a>
-        <a href="./zh/">🇨🇳 中文版</a>
+    <div class="container">
+        <h1>🏛️ Rule-ROM Federation</h1>
+        <p class="subtitle">Global Registry of Executable Intentions</p>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Auto-detecting language... / Определение языка... / 自动检测语言...</p>
+        </div>
+        
+        <div class="lang-select">
+            <a href="/en/" class="lang-btn">🇬🇧 English</a>
+            <a href="/ru/" class="lang-btn">🇷🇺 Русский</a>
+            <a href="/zh/" class="lang-btn">🇨🇳 中文</a>
+        </div>
+        
+        <div class="domains">
+            <h3>🌐 Federation Domains / Домены Федерации / 联邦域名</h3>
+            <div class="domain-grid">
+                <div class="domain-item">
+                    <a href="https://c-safe.rulerom.com">🌿 C-SAFE</a>
+                    <p>Legacy Immunization / Иммунизация Legacy / 传统代码免疫</p>
+                </div>
+                <div class="domain-item">
+                    <a href="https://decima.rulerom.com">🧠 Decima</a>
+                    <p>Neuromorphic Substrate / Нейроморфный субстрат / 神经形态基板</p>
+                </div>
+                <div class="domain-item">
+                    <a href="https://bakery.rulerom.com">🧪 Bakery</a>
+                    <p>Personality Baking / Пропекание личностей / 烘焙个性</p>
+                </div>
+                <div class="domain-item">
+                    <a href="https://audrey.rulerom.com">🔈 Audrey</a>
+                    <p>Analog Soul / Аналоговая душа / 模拟灵魂</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>📧 <a href="mailto:intent@rulerom.com">intent@rulerom.com</a> | <a href="mailto:access@rulerom.com">access@rulerom.com</a></p>
+        </div>
     </div>
+    
+    <script>
+        // Авто-выбор языка на основе Accept-Language
+        (function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const lang = userLang.split('-')[0].toLowerCase();
+            
+            let redirectUrl = '/en/'; // По умолчанию
+            
+            if (lang === 'ru' || lang === 'uk' || lang === 'be' || lang === 'bg' || lang === 'sr') {
+                redirectUrl = '/ru/';
+            } else if (lang === 'zh' || lang === 'cn' || lang === 'tw') {
+                redirectUrl = '/zh/';
+            }
+            
+            // Редирект через 2 секунды
+            setTimeout(() => {
+                window.location.href = redirectUrl;
+            }, 2000);
+        })();
+    </script>
 </body>
 </html>

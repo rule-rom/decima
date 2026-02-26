@@ -24,14 +24,24 @@ jobs:
       - name: Build English version
         run: |
           cd en
-          mkdocs build --clean
+          mkdocs build --clean --site-dir ../site/en
 
       - name: Build Russian version
         run: |
           cd ru
-          mkdocs build --clean
+          mkdocs build --clean --site-dir ../site/ru
 
-      - name: Sync English version to S3
+      - name: Build Chinese version
+        run: |
+          cd zh
+          mkdocs build --clean --site-dir ../site/zh
+
+      - name: Copy root index.html
+        run: |
+          mkdir -p site
+          cp index.html site/index.html
+
+      - name: Sync to S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --endpoint-url=https://storage.yandexcloud.net --delete
@@ -40,17 +50,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
           AWS_REGION: 'ru-central1'
-          SOURCE_DIR: 'en/site'
-          DEST_DIR: 'en'
-
-      - name: Sync Russian version to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --endpoint-url=https://storage.yandexcloud.net --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.YC_BUCKET_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'ru-central1'
-          SOURCE_DIR: 'ru/site'
-          DEST_DIR: 'ru'
+          SOURCE_DIR: 'site'
