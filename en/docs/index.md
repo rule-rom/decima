@@ -64,7 +64,7 @@ The systolic sieve transforms market noise, video streams, or audio signals into
 | **Activation graph** | Neighbors form relay for BUS reading |
 | **Range fuse** | LOCK if thr_cur16 ∈ [thr_lo16..thr_hi16] |
 | **Decay-to-Zero** | Accumulator decays to 0, never jumps over |
-| **Branch collapse** | Inactive tile resets to 0 |
+| **Access Inheritance** | If ancestor unfuses — descendants start accumulating from zero; if it fuses again — they regain access |
 
 ---
 
