@@ -1487,8 +1487,8 @@ Decima-8 — это не «ещё один нейроморфный чип». Э
 | 🔗 **Эмулятор (GitHub)** | [github.com/rulerom/decima8](https://github.com/rulerom/decima8) |
 | 🔗 **Bakery (мета-обучение)** | [bakery.rulerom.com](https://bakery.rulerom.com) |
 | 🔗 **PKI-центр** | [pki.rulerom.com](https://pki.rulerom.com) |
-| 🔗 **libwui (UI-движок)** | [Хабр, 2023](https://habr.com/ru/articles/768336/) |
-| 🔗 **Boosty (поддержка)** | [boosty.to/intentgarden](https://boosty.to/intentgarden) |
+| 🔗 **libwui (UI-движок)** | [libwui.org](https://libwui.org) |
+| 🔗 **Совет сварма** | [intent-garden.org](https://intent-garden.org/swarm.html) |
 
 ---
 
@@ -1535,7 +1535,3 @@ A: Да! Если у вас есть ключ, выданный доверенн
    Для публичного Store проще использовать наш PKI (Tile/Cluster/Council) — он уже доверен всем пользователям.
 
 ---
-
-*P.S. Вопросы по Level16, decay-механике или графу активации? Спрашивайте в комментариях — разберём детально.*
-
-*P.P.S. Хотите увидеть, как Decima-8 распознаёт цифры? В следующей части — OCR для Arial 0-9 за 15 минут. Точность 99%, без нейросетей и CUDA.*
