@@ -12,13 +12,13 @@
 
 **DECIMA-8** — нейроморфная архитектура, оперирующая уровнями энергии, с детерминированным ритмом и каскадной активацией
 
-[📜 MAIN CODEX](codex/index.md)
+[📜 КОДЕКС](codex/index.md)
  
-[👩‍🍳 BAKE TOOL ](tools/ide.md)
+[👩‍🍳 ПЕКАРНЯ](tools/ide.md)
 
-[⚙️ MASHINE SPEC](codex/index.md)
+[⚙️ СПЕКА](codex/index.md)
 
-[</> GITHUB](https://github.com/rulerom/decima8)
+[</> КОД](https://github.com/rulerom/decima8)
 
 CONTACT: <vsb@decima8.org>
 
