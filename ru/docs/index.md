@@ -18,7 +18,7 @@
 
 [GITHUB](https://github.com/rulerom/decima8)
 
-CONTACT: [vsb@decima8.org](vsb@decima8.org)
+CONTACT: vsb@decima8.org
 
 ---
 
