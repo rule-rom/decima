@@ -934,29 +934,21 @@ openssl dgst -sha256 -sign decima_key.pem \
 
 **Next 6 months:**
 
-- Further software development: libd8p, core, IDE
-- Store launch (first personalities)
-- Documentation in Russian and English
+- Further software development: libd8p, core, IDE, Store launch (first people), stable Nomos
 
 **6–24 months:**
 
-- Converters from common formats (ONNX → D8P)
-- University partnerships (research, coursework)
-- FPGA prototype (hardware verification)
+- FPGA prototype (verified on hardware), Release of first useful personalities (with community support)
 
 **2–4 years:**
 
-- B2B pilots (robotics, predictive analytics)
-- Integrations with frameworks (ROS 2, Azure IoT)
-- Certified partners (FPGA/ASIC)
+- B2B pilots (robotics, predictive analytics), Certified partners (FPGA/ASIC)
 
 **4+ years:**
 
-- IP licensing for chip vendors
-- Royalties from sales (if Decima-8 standard used)
-- Open SDK and firmware support
+- IP licensing for chip manufacturers
 
-> *💭 These are not promises, but guidelines. Priorities may change depending on community and resources.*
+*💭 These are guidelines. Timelines may be shorter depending on resources and the community.*
 
 ## 🧩 Summary
 
@@ -968,7 +960,7 @@ openssl dgst -sha256 -sign decima_key.pem \
 | Community | Observer/Seed/Gardener — users; Tile/Cluster/Council — authors |
 | Long-term | Project designed for 10+ years, not exit in 3 years |
 
-> *💭 Decima-8 is infrastructure project. We don't sell software subscription, we build ecosystem.*
+*💭 Decima-8 is an infrastructure project. Not a software subscription, but an ecosystem.*
 
 ---
 
@@ -1027,45 +1019,15 @@ Decima-8 is architecture that encodes activation level (Level16) in one clock, u
 - **SignedWeight5:** signed weights [-7..+7], hardware-level lateral inhibition
 - **Relay activation:** dependency graph instead of routers, 0% area for routing
 - **Two-phase cycle:** READ → WRITE, fixed latency, zero jitter
-- **Open specification:** specification, emulator, .d8p format — under MIT/Apache 2.0
+- **Open specification:** documentation, emulator, .d8p format — under MIT
 
-**We don't promise AGI.**
+**We don't promise "AGI," and in general, we're rather lukewarm on the whole concept of stochastic "AI."**
 
-We provide deterministic computational fabric for tasks where predictability, efficiency, and pattern expressiveness matter.
+We provide a deterministic computational fabric for tasks where predictability, efficiency, and expressiveness of patterns are important.
 
-**What to do next**
+**Decima-8 is a way to build computations at energy levels, resonance, and relay activation, as well as a model for creating a sustainable open community where everyone's contribution serves the purpose of suppressing chaos and promoting determinism.**
 
-**Verify:**
-
-- Emulator: github.com/rulerom/decima8
-- Specification: decima.rulerom.com/ru/CONTRACT/
-- Run benchmarks on your hardware
-
-**Experiment:**
-
-- Write .d8p generator in Python/Rust/Go
-- Modify emulator (Level32, different weights, new modes)
-- Propose extension via Spec RFC
-
-**Use:**
-
-- IDE (1.3 MB, offline) for visual personality tuning
-- Store for publishing and sharing (with PKI signature)
-- Emulator for CI/CD integration, auto-tests, prototypes
-
-**Resources**
-
-| Resource | Description |
-|----------|-------------|
-| Contract v0.2 | decima.rulerom.com/ru/CONTRACT |
-| Emulator (GitHub) | github.com/rulerom/decima8 |
-| Bakery (reference) | bakery.rulerom.com |
-| PKI center | pki.rulerom.com |
-| libwui (UI engine) | libwui.org |
-
-**Decima-8 is not "another neuromorphic project". This is attempt to build computation on energy levels, resonance, and relay activation.**
-
-> *💭 If "from physics, not from marketing" approach is closer to you — welcome.*
+> *💭 If you prefer a physics-based approach rather than a marketing one, join us!*
 
 ---
 
@@ -1098,4 +1060,15 @@ A: Yes. Store accepts keys from any trusted centers (Corporate CA, government UC
 
 ---
 
-**Bake the Future. Build the Substrate.** 🛠️⚡️
+## 🔖 Links
+
+| What | Why | Where |
+| --- | ----- | --- |
+| Machine Specification | Comprehensive Contract for Emulator - FPGA - ASIC Binary Compatibility | [CONTRACT_v02](../CONTRACT.md) |
+| Reference Emulator Source Code, Verilog Specifications | Integration into Specific PACs, Verification | <https://github.com/rulerom/decima8> |
+| IDE for Visual Baking | Manual and semi-automated baking of personality neural tissue, visual inspection, and prompt adjustment of any personality fabricated | [Download IDE](../tools/ide.md) |
+| Personality Store | Platform for publishing user personalities | <https://rulerom.store> (release 1.04) |
+| PKI | Verification of executable files, identity signature management infrastructure | <https://pki.rulerom.com/> |
+| Swarm Council | Implementing such a project without a full-fledged community is impossible. | <https://intent-garden.org/swarm.html> |
+
+---
