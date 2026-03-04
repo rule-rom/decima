@@ -7,7 +7,7 @@
 
 ---
 
-## 🎯 What is Decima8 IDE?
+## 🏗️ What is Decima8 IDE?
 
 **Decima8 IDE** is a visual environment for baking neuromorphic personalities. Here you manually configure tiles, weights, and thresholds while observing the recognition process in real-time.
 
@@ -34,10 +34,6 @@ SHA256: `d6f49f6e7ee48d6e9a4576d1e6ecaaa41664610e`
 | **OS** | Windows 10/11, Linux (Ubuntu 20.04+) |
 | **Memory** | 8 MB RAM minimum |
 | **Disk** | 2 MB free space |
-
-### Binary Files
-
-- **Decima8 IDE** — Integrated environment for neuromorphic patterns
 
 ---
 
