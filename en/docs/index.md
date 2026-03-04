@@ -18,7 +18,7 @@
  
 [👩‍🍳 BAKE TOOL](tools/ide.md)
 
-[⚙️ MASHINE SPEC](codex/index.md)
+[⚙️ MASHINE SPEC](CONTRACT/index.md)
 
 [</> GITHUB](https://github.com/rulerom/decima8)
 
