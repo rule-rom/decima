@@ -35,7 +35,7 @@ Modern neuromorphic systems face two independent problems.
 - **Relay activation instead of packet routing:** tiles don't transfer data to each other, activation propagates through dependency graph
 - **Result:** fixed latency, predictable behavior, 0% area on routers.
 
-> *⚛︎ We don't emulate neurons. We build a fabric where recognition is physics.*
+> *⚛︎ Instead of emulating bio-neurons, we build a tissue where recognition is physics.*
 
 ---
 
