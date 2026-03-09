@@ -43,6 +43,6 @@ if (activation >= thr_lo && activation <= thr_hi) {
 
 ## Читать дальше
 
-- [Субстрат не важен](substrate.md)
 - [Я / НЕ Я: Граница субъектности](detector-antagonist.md)
 - [Детерминизм как этика](../arch/determenism.md)
+- [Субстрат не важен](substrate.md)

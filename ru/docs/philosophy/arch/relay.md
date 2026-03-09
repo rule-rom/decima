@@ -101,6 +101,6 @@ send(packet, path);                            // Отправка
 
 ## Читать дальше
 
+- [Отец и Шина: контроль vs данные](father-bus.md)
 - [Детерминизм как этика](determenism.md)
 - [Я / НЕ Я: Граница субъектности](../base/detector-antagonist.md)
-- [Отец и Шина: контроль vs данные](father-bus.md)

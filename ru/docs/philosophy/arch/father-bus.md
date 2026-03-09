@@ -108,6 +108,6 @@ typedef struct {
 
 ## Читать дальше
 
-- [Эстафета вместо роутера](relay.md)
+- [Земля как Training Phase: теодицея в архитектуре](../world/earth.md)
 - [Детерминизм как этика](determenism.md)
 - [Я / НЕ Я: Граница субъектности](../base/detector-antagonist.md)

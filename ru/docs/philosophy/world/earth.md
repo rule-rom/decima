@@ -142,6 +142,6 @@ if (weight >= THR_LO && weight <= THR_HI) {
 
 ## Читать дальше
 
+- [Воннегут и Руди Герц: оцифровка мастерства](piano14.md)
 - [Субстрат не важен](../base/substrate.md)
-- [Отец и Шина: контроль vs данные](../arch/father-bus.md)
 - [Личность — это не магия](../base/personality.md)

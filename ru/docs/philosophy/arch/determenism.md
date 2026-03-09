@@ -96,6 +96,6 @@ signal3 = swarm.run(frame)  # BUY @ 15:32:01.020
 
 ## Читать дальше
 
+- [Эстафета вместо роутера](relay.md)
 - [Личность — это не магия](../base/personality.md)
 - [Я / НЕ Я: Граница субъектности](../base/detector-antagonist.md)
-- [Эстафета вместо роутера](relay.md)
