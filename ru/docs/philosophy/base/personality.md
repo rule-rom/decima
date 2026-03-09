@@ -40,3 +40,9 @@ if (activation >= thr_lo && activation <= thr_hi) {
     return NOT_ME;  // Слишком слабо ИЛИ слишком сильно
 }
 ```
+
+## Читать дальше
+
+- [Субстрат не важен](substrate.md)
+- [Я / НЕ Я: Граница субъектности](detector-antagonist.md)
+- [Детерминизм как этика](../arch/determenism.md)

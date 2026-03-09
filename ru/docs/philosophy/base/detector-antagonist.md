@@ -78,6 +78,5 @@ if (activation > thr_hi) {
 ## Читать дальше
 
 - [Личность — это не магия](personality.md)
-- Принцип: Детерминизм как этика
-- Спецификация: Level16
-- Пример: whale_detector.d8p
+- [Детерминизм как этика](../arch/determenism.md)
+- [Отец и Шина: контроль vs данные](../arch/father-bus.md)
