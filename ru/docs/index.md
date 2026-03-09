@@ -16,6 +16,8 @@
  
 [👩‍🍳 ПЕКАРНЯ](tools/ide.md)
 
+[💭 ФИЛОСОФИЯ](base/personality.md)
+
 [⚙️ СПЕЦИФИКАЦИЯ](CONTRACT.md)
 
 [</> КОД](https://github.com/rulerom/decima8)
