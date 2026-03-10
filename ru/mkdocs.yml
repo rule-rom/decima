@@ -49,7 +49,8 @@ nav:
       - 'Земля как Training Phase' : philosophy/world/earth.md
       - 'Воннегут и Руди Герц' : philosophy/world/piano14.md
       - 'Зависимость и Любовь' : philosophy/world/addict.md
-
+    - '🏠 Номос (Организация)': 
+      - 'Архитектурный манифест' : philosophy/nomos/about.md
   - '📋 Спецификация':
     - 'Bake TLV': spec/bake.md
     - 'Протокол': spec/protocol.md
