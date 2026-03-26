@@ -14,7 +14,9 @@
 
 [📜 КОДЕКС](codex/index.md)
  
-[👩‍🍳 ПЕКАРНЯ](tools/ide.md)
+[👩‍🍳 IDE](tools/ide.md)
+
+[📊 BENCHMARK](bench/index.md)
 
 [⚙️ СПЕЦИФИКАЦИЯ](CONTRACT.md)
 

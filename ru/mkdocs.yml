@@ -27,8 +27,9 @@ nav:
   - '📖 Главная':
     - 'Обзор': index.md
     - 'Кодекс': codex/index.md
-    - 'Контракт': CONTRACT.md
     - 'IDE': tools/ide.md
+    - 'Benchmark': bench/index.md
+    - 'Контракт': CONTRACT.md
 
   - '🏗 Архитектура':
     - 'Тайлы': arch/tiles.md
