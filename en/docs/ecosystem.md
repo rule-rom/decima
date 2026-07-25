@@ -1,37 +1,22 @@
 ---
-title: "rulerom.com — Ecosystem of Sovereign Projects"
-description: "Catalog of sovereign projects: decima, philo, audrey, c-safe, bakery, pki"
-date: 2026-03-15
-tags: [ecosystem, projects, sovereignty, verification]
+title: "Rule-ROM Ecosystem"
+description: "Decima-8, the bakery, executable-personality philosophy, and Whaler"
+date: 2026-07-25
+tags: [Decima, Whaler, baker, Philo, verification]
 lang: en
 ---
 
-# rulerom.com :: catalog of sovereign projects united by philosophy:
+# Rule-ROM Ecosystem
 
-«Theodicy in code. Suffering = gradient.»
+Decima-8 is the computational substrate. Other domains cover personality authorship, verification, and applied action.
 
-Each project is independent. All projects are verifiable. The entire ecosystem is open.
+| Domain | Responsibility |
+| --- | --- |
+| [Rule-ROM](https://rulerom.com/en/) | Registry of projects and publication boundaries |
+| [Philo](https://philo.rulerom.com/en/) | Architect, personality, event memory, and limits of analogy |
+| [Bakery](https://bakery.rulerom.com/en/) | `.d8p` construction, analysis, and reproducibility |
+| [Whaler](https://whaler.rulerom.com/) | First applied Decima-8 family |
+| [C-SAFE](https://c-safe.rulerom.com/en/) | Verification and audit |
+| [PKI](https://pki.rulerom.com/en/) | Signatures and artifact provenance |
 
----
-
-**🗺️ Architecture: Hub → Project → Depth**
-
-- [rulerom.com](https://rulerom.com/en/) (Hub)
-- [decima.rulerom.com](https://decima.rulerom.com/en/) → Neuromorphic architecture, IDE, benchmarks
-- [philo.rulerom.com](https://philo.rulerom.com/en/) → Philosophy: corridor of subjectivity, relay, theodicy
-- [audrey.rulerom.com](https://audrey.rulerom.com/en/) → Audio experiments on vacuum substrate
-- [c-safe.rulerom.com](https://c-safe.rulerom.com/en/) → Security: verification, audit, sovereign stack
-- [bakery.rulerom.com](https://bakery.rulerom.com/en/) → Baking tools: best practices from world bakeries
-- [pki.rulerom.com](https://pki.rulerom.com/en/) → Signature infrastructure: Ed25519, verification, registry
-
----
-
-## Principle:
-
-- One project = one subdomain = clear boundaries
-- Independent deploy, independent documentation
-- Unified philosophy, unified verification standard
-
----
-
-## Founded by [🌿 Intent Garden Org](https://intent-garden.org/main/)
+The architect defines a personality, the runtime executes it, and an application director interprets its events. These roles are deliberately separate.

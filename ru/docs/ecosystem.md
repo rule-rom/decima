@@ -1,37 +1,22 @@
 ---
-title: "rulerom.com — Экосистема суверенных проектов"
-description: "Каталог суверенных проектов: decima, philo, audrey, c-safe, bakery, pki"
-date: 2026-03-15
-tags: [экосистема, проекты, суверенитет, проверка, верификация]
+title: "Экосистема Rule-ROM"
+description: "Decima-8, пекарня, философия исполняемой личности и Whaler"
+date: 2026-07-25
+tags: [Decima, Whaler, пекарь, Philo, верификация]
 lang: ru
 ---
 
-# rulerom.com :: каталог суверенных проектов, объединённых философией:
+# Экосистема Rule-ROM
 
-«Theodicy in code. Suffering = gradient.»
+Decima-8 является вычислительным субстратом. Остальные домены отвечают за авторство личности, проверку и прикладное действие.
 
-Каждый проект — самостоятелен. Все проекты — верифицируемы. Вся экосистема — открыта.
+| Домен | Ответственность |
+| --- | --- |
+| [Rule-ROM](https://rulerom.com/ru/) | Реестр проектов и публикационных границ |
+| [Philo](https://philo.rulerom.com/ru/) | Архитектор, личность, событийная память и пределы аналогий |
+| [Bakery](https://bakery.rulerom.com/ru/) | Сборка, анализ и воспроизводимость `.d8p` |
+| [Whaler](https://whaler.rulerom.com/) | Первое прикладное семейство Decima-8 |
+| [C-SAFE](https://c-safe.rulerom.com/ru/) | Верификация и аудит |
+| [PKI](https://pki.rulerom.com/ru/) | Подписи и происхождение артефактов |
 
----
-
-**🗺️ Архитектура: Hub → Project → Depth**
-
-- [rulerom.com](https://rulerom.com/ru/) (Hub)
-- [decima.rulerom.com](https://decima.rulerom.com/ru/) → Нейроморфная архитектура, IDE, бенчмарки
-- [philo.rulerom.com](https://philo.rulerom.com/ru/) → Философия: коридор субъектности, эстафета, теодицея
-- [audrey.rulerom.com](https://audrey.rulerom.com/ru/) → Аудио-эксперименты на вакуумном субстрате
-- [c-safe.rulerom.com](https://c-safe.rulerom.com/ru/) → Безопасность: верификация, аудит, суверенный стек
-- [bakery.rulerom.com](https://bakery.rulerom.com/ru/) → Инструменты пропечки: лучшие практики мировых пекарен
-- [pki.rulerom.com](https://pki.rulerom.com/ru/) → Инфраструктура подписей: Ed25519, верификация, реестр
-
----
-
-## Принцип:
-
-- Один проект = один поддомен = чёткие границы
-- Независимый деплой, независимая документация
-- Единая философия, единый стандарт верификации
-
----
-
-## Founded by [🌿 Intent Garden Org](https://intent-garden.org/main_ru/)
+Архитектор определяет личность, runtime исполняет её, прикладной директор интерпретирует события. Эти роли разделены намеренно.

@@ -1,139 +1,37 @@
-# BUS16
+# Shared VSB and output BUS16
 
-> **Honest summing of all tile contributions**
+DECIMA-8 has two distinct planes that must not be conflated.
 
----
+| Plane | Direction | Purpose |
+| --- | --- | --- |
+| `VSB_INGRESS16[8]` | Conductor → swarm | One common input frame for every ACTIVE tile |
+| `BUS16[8]` | swarm → Conductor | Saturated sum of eligible `BUS_W` tile contributions |
 
-## 📊 Bus Physics
+## VSB: common physical context
 
-### Configuration
+VSB does not travel through a tile chain. Within a tick, the same eight-lane vector is available to every ACTIVE tile. Tiles hear it differently because of their weights and accumulated history.
 
-| Parameter | Value |
-|-----------|-------|
-| **Lanes** | 8 lane (BUS16[0..7]) |
-| **Level** | Level16 (0..15) |
-| **Mode** | Summing in PHASE_WRITE |
-| **Policy** | Saturate (clamp15), no wrap |
+This is the hydraulic model: one shared pressure manifold acts on many local chambers simultaneously.
 
----
+## BUS16: readout, not tile input
 
-## 🧮 Contribution Summing
+During WRITE, eligible tiles contribute `row_out`:
 
-In PHASE_WRITE for each lane i=0..7:
-
-```python
-contrib_from_all_tiles[i] = Σ drive_vec[t][i]
-  for all t where:
-    - (routing_flags16[t] & BUS_W) != 0
-    - locked self OR locked_ancestor
-
-bus_raw[i] = contrib_from_all_tiles[i]
-BUS16[i] = clamp15(bus_raw[i])
-BUS_CLIP[i] = (bus_raw[i] > 15)
+```text
+bus_raw[lane] = sum(row_out[t][lane] for eligible BUS_W tiles)
+BUS16[lane] = clamp15(bus_raw[lane])
+BUS_CLIP[lane] = bus_raw[lane] > 15
 ```
 
-### Ranges
+The upper bound of `bus_raw` depends on the actual number of active writers. The old `256 x 15` value is not a v3 invariant: the runtime supports fabrics up to 4096 tiles.
 
-| Value | Range |
-|-------|-------|
-| **bus_raw** | [0..3840] (256 tiles × 15) |
-| **BUS16** | [0..15] (clamped) |
+## BUS_R and BUS_W
 
----
+- `BUS_R` is a historical flag name. In the current runtime it makes a tile an ACTIVE graph seed; the tile does not read BUS16 data.
+- `BUS_W` allows a tile to contribute to the common output when its branch has a locked source.
 
-## 🚨 CLIP / OVF Flags
+A neighbour edge also carries no Level16 data. It only permits the descendant to apply its own matrix to the common VSB on the next tick.
 
-### BUS_CLIP
+## Why the split matters
 
-```
-BUS_CLIP[i] = (bus_raw[i] > 15)
-BUS_CLIP_ANY = OR_i BUS_CLIP[i]
-```
-
-### BUS_OVF
-
-```
-BUS_OVF_ANY = BUS_CLIP_ANY
-OVF_ANY = BUS_OVF_ANY
-```
-
-> **Policy v0.2:** only saturate (clamp15), no wrap/divide.
-
----
-
-## 🔄 Phase Discipline
-
-### READ Phase
-
-- Conductor drives VSB[0..7]
-- Island does **NOT** drive BUS
-- Tiles read VSB_INGRESS
-
-### TURNAROUND
-
-```
-Conductor: Hi-Z / no-drive VSB
-Island: prepare drive BUS
-```
-
-### WRITE Phase
-
-- Conductor: Hi-Z VSB
-- Island drives BUS16
-- Tiles with BUS_W=1 and locked write drive_vec
-
-### READOUT_SAMPLE
-
-```
-R0_RAW_BUS: readout = BUS16[0..7] as 8×Level16
-```
-
----
-
-## 🎯 BUS Write Conditions
-
-A tile writes to BUS16 only if:
-
-1. **BUS_W == 1** (routing_flags16 & 0x0200)
-2. **locked self** OR **locked_ancestor** (has locked ancestor in activation graph)
-
-### Drive Vector
-
-```
-if locked_after == 1:
-  drive_vec[i] = in16[i]  # passthrough
-else:
-  drive_vec[i] = row16_out[i]  # computed from weights
-```
-
----
-
-## 📐 Calculation Example
-
-### Given
-
-- 3 tiles write to lane 0
-- drive_vec[0] = [10, 5, 8]
-
-### Calculation
-
-```
-bus_raw[0] = 10 + 5 + 8 = 23
-BUS16[0] = clamp15(23) = 15
-BUS_CLIP[0] = true (23 > 15)
-```
-
----
-
-## 🔗 Relation to VSB
-
-| Plane | Direction | Phase |
-|-------|-----------|-------|
-| **VSB[0..7]** | Conductor → Island | READ |
-| **BUS16[0..7]** | Island → Conductor | WRITE |
-
-> **Important:** Data is not sent to neighbors. Neighbors only form activation graph for BUS read permission.
-
----
-
-**Bake the Future. Build the Substrate.** 🛠️⚡️
+One data stream is presented to the whole fabric while topology selects which parts of the personality may respond. Branch depth can therefore express a temporal sequence without copying market, audio, or sensor data between tiles.

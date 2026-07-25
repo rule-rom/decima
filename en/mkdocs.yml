@@ -1,4 +1,4 @@
-site_name: DECIMA-8 🐉 — Neuromorphic Engine
+site_name: DECIMA-8 — deterministic neuromorphic machine
 site_url: https://decima.rulerom.com
 theme:
   name: material
@@ -24,23 +24,21 @@ extra:
     property: 107008715
 
 nav:
-  - '📖 Home':
-    - 'Overview': index.md
-    - 'Codex': codex/index.md
-    - 'Contract': CONTRACT.md
+  - 'Home':
+    - 'v3 overview': index.md
     - 'IDE': tools/ide.md
 
-  - '🏗 Architecture':
-    - 'Tiles': arch/tiles.md
-    - 'BUS16': arch/bus.md
-    - 'READ/WRITE Phases': arch/phase.md
-    - 'Routing': arch/routing.md
+  - 'Architecture v3':
+    - 'Tile model': arch/tiles.md
+    - 'VSB and BUS16': arch/bus.md
+    - 'Runtime tick': arch/phase.md
+    - 'Permission graph': arch/routing.md
 
-  - '📋 Specification':
+  - 'v0.2 archive':
+    - 'Codex': codex/index.md
+    - 'Contract': CONTRACT.md
     - 'Bake TLV': spec/bake.md
     - 'Protocol': spec/protocol.md
-
-  - '🔌 Integration':
     - 'UDP Protocol': integration/udp.md
 
-  - '💎 Ecosystem': ecosystem.md
+  - 'Ecosystem': ecosystem.md

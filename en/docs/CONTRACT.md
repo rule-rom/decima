@@ -1,3 +1,5 @@
+> **Historical v0.2 document.** Current v3 physics is described in the [overview](index.md) and [Architecture](arch/tiles.md). The current runtime uses common VSB ingress, local permission edges, and decay on locked tiles.
+
 DECIMA-8 Resonance Swarm Contract v0.2 (Activation Graph + Range Fuse + Decay-to-Zero)
 Codename: Siberian Tank Interface
 

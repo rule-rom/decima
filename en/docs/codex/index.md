@@ -1,3 +1,5 @@
+> **v0.2 archive.** This Codex records an early project stage. For current v3 physics start with the [home page](../index.md): common VSB reaches every ACTIVE tile, while neighbour edges carry computation permission only.
+
 # Decima-8: Neuromorphic Architecture Operating on Energy Levels
 
 > *Open specification, Level16, relay activation without routers. v0.2*

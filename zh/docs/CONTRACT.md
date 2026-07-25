@@ -1,3 +1,5 @@
+> **历史 v0.2 文档。** 当前 v3 物理模型见[概述](index.md)与[架构](arch/tiles.md)。当前 runtime 使用公共 VSB 输入、局部许可边，并对 locked 图块应用 decay。
+
 # DECIMA-8 Resonance Swarm Contract v0.2
 
 **副标题:** 激活图 + 范围熔丝 + 衰减归零  

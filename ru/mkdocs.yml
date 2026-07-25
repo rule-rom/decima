@@ -1,4 +1,4 @@
-site_name: 🐉 Нейроморфная машина DECIMA-8
+site_name: DECIMA-8 — детерминированная нейроморфная машина
 site_url: https://decima.rulerom.com
 theme:
   name: material
@@ -24,24 +24,24 @@ extra:
     property: 107008715
 
 nav:
-  - '📖 Главная':
-    - 'Обзор': index.md
-    - 'Кодекс': codex/index.md
+  - 'Главная':
+    - 'Обзор v3': index.md
     - 'IDE': tools/ide.md
     - 'Benchmark': bench/index.md
-    - 'Контракт': CONTRACT.md
 
-  - '🏗 Архитектура':
-    - 'Тайлы': arch/tiles.md
-    - 'Шина BUS16': arch/bus.md
-    - 'Фазы READ/WRITE': arch/phase.md
-    - 'Маршрутизация': arch/routing.md
-  
-  - '📋 Спецификация':
+  - 'Архитектура v3':
+    - 'Модель тайла': arch/tiles.md
+    - 'VSB и BUS16': arch/bus.md
+    - 'Такт runtime': arch/phase.md
+    - 'Граф допуска': arch/routing.md
+
+  - 'Архив v0.2':
+    - 'Кодекс': codex/index.md
+    - 'Контракт': CONTRACT.md
     - 'Bake TLV': spec/bake.md
     - 'Протокол': spec/protocol.md
-
-  - '🔌 Интеграция':
     - 'UDP Protocol': integration/udp.md
+    - 'Latch Corridor (Tier 5)': nda/latch.md
+    - 'RTL (Tier 5)': nda/rtl.md
 
-  - '💎 Экосистема': ecosystem.md
+  - 'Экосистема': ecosystem.md

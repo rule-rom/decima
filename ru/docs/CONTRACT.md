@@ -1,3 +1,5 @@
+> **Исторический документ v0.2.** Текущая физика v3 описана в [обзоре](index.md) и разделе [Архитектура](arch/tiles.md). Актуальный runtime использует общий VSB-вход, локальные рёбра допуска и decay на locked-тайлах.
+
 # DECIMA-8 Resonance Swarm Contract v0.2 (Activation Graph + Range Fuse + Decay-to-Zero)
 
 Codename: Siberian Tank Interface

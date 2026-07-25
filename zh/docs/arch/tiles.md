@@ -1,210 +1,71 @@
-# 图块模型 v0.2
+# v3 图块模型
 
-> **图块 = DECIMA-8 的最小可编程实体**
+图块是共享八线 VSB 上的局部液压积分器。它既不接收相邻图块的输出，也不把自己的数据转发给相邻图块。
 
----
+## 架构师烘焙的内容
 
-## 📊 图块结构
+| 字段 | 作用 |
+| --- | --- |
+| `W[8][8]` | 对公共 VSB 输入进行有符号变换 |
+| `thr_lo16`, `thr_hi16` | 锁存区间 |
+| `decay16` | 累加器向零泄漏 |
+| `routing_flags16` | 局部许可边、`BUS_R`、`BUS_W` |
+| `domain_id4` | 竞争与 reset domain |
+| `priority8` | domain 内的 winner 选择 |
+| `pattern_id16` | 事件标识符 |
+| `reset_on_fire_mask16` | winner 触发 reset 的 domain |
 
-### 烘焙状态 (Baked State)
+Runtime 状态主要由有符号累加器 `thr_cur16` 和锁存器 `locked` 构成。
 
-| 参数 | 类型 | 范围 | 描述 |
-|------|------|------|------|
-| **thr_lo16** | i16 | -32768..+32767 | 熔丝下阈值 |
-| **thr_hi16** | i16 | -32768..+32767 | 熔丝上阈值 |
-| **decay16** | u16 | 0..32767 | 衰减到零 |
-| **domain_id4** | u8 | 0..15 | 重置组 |
-| **priority8** | u8 | 0..255 | 碰撞优先级 |
-| **pattern_id16** | u16 | 0..32767 | 模式 ID |
-| **routing_flags16** | u16 | 10 比特 | 激活方向 |
-| **W[8][8]** | SignedWeight5 | mag3(0..7)+sign1 | 权重矩阵 8×8 (-7..+7) |
-| **reset_on_fire_mask16** | u16 | 16 比特 | 触发时自动重置域 |
+## 公共输入
 
-### 运行时状态 (Runtime)
+每个 ACTIVE 图块收到相同的帧：
 
-| 参数 | 类型 | 描述 |
-|------|------|------|
-| **thr_cur16** | i16 | 当前累加器 (-32768..+32767) |
-| **locked** | 0/1 | 熔丝锁定 (latched) |
-| **drive_vec[8]** | u8[8] | 输出值 (0..15) |
-
-> **注意：** Decay 总是应用 (如果 decay16 > 0)，即使在锁定的图块上。
-
----
-
-## 🔄 ACTIVE 闭包 (激活图)
-
-图块被认为是 **ACTIVE** 如果它在"活动链"中，可以读取 BUS16、计算、应用 decay。
-
-### 激活规则
-
-```
-Seed: ACTIVE[t] = 1 如果 BUS_R == 1 (源/链根)
-
-Propagate: ACTIVE[t] = 1 如果存在 p ∈ Parents(t) 使得:
-           ACTIVE[p] == 1 且 locked_before[p] == 1
+```c
+in16[t][lane] = clamp15(VSB_INGRESS16[lane]);
 ```
 
-这被计算为**单调闭包直到稳定** (最小不动点)。
+图块矩阵不负责传送数据。它定义该图块对公共流八条“弦”的敏感方式。
 
-### 分支坍缩
+## 累积
 
-如果 `ACTIVE[t] == 0`，图块被认为是"死区"：
+对于 unlocked 图块：
 
-```
-thr_cur16 := 0
-locked := 0
-drive_vec := {0, 0, 0, 0, 0, 0, 0, 0}
-```
-
-权重、decay、drive 在此 tick 中不应用。
-
----
-
-## 📥 图块输入 (VSB_INGRESS)
-
-如果 `ACTIVE[t] == 1`，图块**只读取 VSB_INGRESS16** (所有 8 lanes)：
-
-```
-for i in 0..7:
-  in16[t][i] = clamp15(VSB_INGRESS16[i])
-  IN_CLIP[t][i] = (VSB_INGRESS16[i] > 15)
+```text
+delta = sum(W x VSB)
+thr_cur = clamp_i16(decay_toward_zero(thr_cur + delta))
 ```
 
-> **重要：** BUS16 不跟 VSB 累加。BUS16 在 READ 阶段的唯一作用是语义的：带有 BUS_R 标志的图块成为激活图源 (ACTIVE seed)。总线数据不参与 in16 计算。
+当新状态进入有效的 `[thr_lo16..thr_hi16]` 区间时，图块可以锁存。`unlocked -> locked` 转换形成 `FIRE` 事件。
 
-### 继电器 (2 ticks)
+上限是过滤器的真实组成部分。积累影响过弱或过强都在区间外，但这种差异的语义由 baker 定义，而不是机器自己定义。
 
-```
-Tick N:   祖先融合 → 在 PHASE_WRITE 中驱动总线
-Tick N+1: 后代通过 BUS_R 激活 → 读取 VSB_INGRESS → 计算
-```
+## Locked 图块的生命周期
 
----
+Locked 图块：
 
-## 🔒 FUSE-LOCK 机制
+- 不再加入新的 `delta`；
+- 继续向零 decay；
+- 仅在累加器位于区间内且激活许可仍存在时保持 locked；
+- 离开区间或失去许可时 unlock；
+- 根据当前公共 VSB 重新计算 `row_out`，用于可能的 BUS16 贡献。
 
-### Decay-to-Zero + 范围熔丝
+因此 lock 不是永久标记，也不是输入 passthrough，而是一种带泄漏的暂存状态。
 
-**Decay 总是应用** (如果 decay16 > 0)，即使在锁定图块上。
+## 涌现记忆
 
-如果 `locked_before == 0`：
+序列不存放在独立 buffer 中，而体现在：
 
-```python
-# 1. 计算 row-pipeline
-delta_raw = Σ row16_signed[r]  # 范围 [-6720..+6720]
+1. 已积累的 `thr_cur`；
+2. 当前锁存状态；
+3. 获得许可的拓扑前沿；
+4. domain FIRE 与 reset。
 
-# 2. 更新累加器
-thr_tmp = thr_cur16 + delta_raw
+baker 用少量图块构造记忆器官，tape 则把状态写入其中。
 
-# 3. Decay 拉向 0，不跳过 0
-if decay16 > 0:
-  if thr_tmp > 0:
-    thr_tmp = max(thr_tmp - decay16, 0)
-  elif thr_tmp < 0:
-    thr_tmp = min(thr_tmp + decay16, 0)
+## 不变量
 
-thr_cur16 = clamp_range(thr_tmp, -32768, 32767)
-
-# 4. 范围熔丝
-range_active = (thr_lo16 < thr_hi16)
-in_range = range_active AND (thr_lo16 <= thr_cur16) AND (thr_cur16 <= thr_hi16)
-
-has_signal = (delta_raw != 0)
-entered_by_decay = (decay16 > 0) AND (in_range == true) AND (in_range_before_decay == false)
-
-locked_after = (BAKE_APPLIED == 1) AND in_range AND (has_signal OR entered_by_decay)
-```
-
-如果 `locked_before == 1`：
-
-```python
-locked_after := 1
-# 权重不应用 (passthrough)
-
-# Decay 总是应用 (如果 decay16 > 0)
-if decay16 > 0:
-  if thr_cur16 > 0:
-    thr_cur16 = max(thr_cur16 - decay16, 0)
-  elif thr_cur16 < 0:
-    thr_cur16 = min(thr_cur16 + decay16, 0)
-```
-
-### Locked Passthrough
-
-如果 `locked_after == 1`，图块作为"铜桥"：
-
-- 权重矩阵 W **不应用**
-- `drive_vec[i] = in16[i]` 对所有 i=0..7 (passthrough)
-- **Decay 应用** (如果 decay16 > 0, thr_cur16 拉向 0)
-
----
-
-## 🧮 RowOut Pipeline (PHASE_READ)
-
-对每行 r=0..7：
-
-### Signed 乘法
-
-```
-row_raw_signed[r] = Σ_{i=0..7} (in16[i] * Wmag[r][i] * sign)
-# 范围：[-840..+840]
-```
-
-### 线路/Drive (无负数)
-
-```
-row16_out[r] = clamp15((max(row_raw_signed[r], 0) + 7) / 8)
-# 范围：0..15
-```
-
-### 累加器 (signed)
-
-```
-row16_signed[r] = row_raw_signed[r]
-# 范围：[-840..+840]
-```
-
----
-
-## 🚗 Drive 选择 (WRITE)
-
-在 READ 结束时：
-
-```
-if locked_after == 1:
-  drive_vec[i] = in16[i]  # passthrough
-else:
-  drive_vec[i] = row16_out[i]  # 从权重计算
-```
-
----
-
-## 🎯 图块事件
-
-| 事件 | 条件 |
-|------|------|
-| **LOCK_TRANSITION(t)** | locked_before==0 && locked_after==1 |
-| **FIRE(t)** | LOCK_TRANSITION(t) |
-
-### 不变量 v0.2
-
-```
-locked == 1 ⇒ thr_lo16 <= thr_cur16 <= thr_hi16
-```
-
----
-
-## 📐 SignedWeight5
-
-权重：mag3∈[0..7], sign1∈{0,1} (1="+", 0="−")。
-
-```
-mul_signed_raw(a, mag, sign) = (sign ? +1 : -1) * (a * mag)
-# a∈[0..15], mag∈[0..7] → [-105..+105] 每项
-# 8 项每行 → [-840..+840] 每行
-```
-
----
-
-**Bake the Future. Build the Substrate.** 🛠️⚡️
+- 相同 `.d8p`、初始状态、完整 VSB tape 和 reset 调度产生相同 trace；
+- `FIRE` 只表示进入 lock 的转换；
+- 非 ACTIVE 图块清除 runtime 状态；
+- 相邻边不携带数据。

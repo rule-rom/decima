@@ -104,7 +104,7 @@ Click on tile to open editor:
 
 | Parameter | Description | Range |
 |-----------|-------------|-------|
-| **BUS_R** | Read bus (ACTIVE source) | 0/1 |
+| **BUS_R** | Historical name: make the tile an ACTIVE-graph root | 0/1 |
 | **BUS_W** | Write to bus (WRITE phase) | 0/1 |
 | **Threshold** | Fuse range [thr_lo..thr_hi] | -32768..+32767 |
 | **Decay** | Decay force to zero | 0..32767 |
