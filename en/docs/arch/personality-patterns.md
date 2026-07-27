@@ -132,6 +132,20 @@ Each input contour records source units, deadband, Level16 full scale, FIRE and
 rearm levels, causal window, and transformer version. Gain may differ between
 sources, but it remains frozen inside a verifiable contour.
 
+```mermaid
+flowchart LR
+    A["Full scale is too large"] --> B["Impact remains at Level 0..2"]
+    B --> C["The organ is deaf"]
+    D["Matched full scale"] --> E["The useful Level 0..15 range is used"]
+    E --> F["The organ distinguishes event strength"]
+    G["Full scale is too small"] --> H["Impact remains at Level 14..15"]
+    H --> I["The organ is saturated and noisy"]
+```
+
+Hysteresis removes repeated crossing events near a threshold, but it does not
+repair an incorrect scale. A deaf input remains deaf after a Schmitt trigger,
+while a saturated input still produces physically indistinguishable events.
+
 ## Required verification
 
 1. Equal input and initial state produce a byte-identical trace.
