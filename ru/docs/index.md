@@ -37,6 +37,7 @@ DECIMA-8 принимает поток восьмиуровневых линий
 ## Документация
 
 - [Модель тайла v3](arch/tiles.md)
+- [Паттерны архитектора личности](arch/personality-patterns.md)
 - [VSB и BUS16](arch/bus.md)
 - [Такт runtime](arch/phase.md)
 - [Граф активации](arch/routing.md)

@@ -25,6 +25,7 @@ nav:
 
   - 'v3 架构':
     - '图块模型': arch/tiles.md
+    - '人格模式': arch/personality-patterns.md
     - 'VSB 与 BUS16': arch/bus.md
     - 'Runtime tick': arch/phase.md
     - '许可图': arch/routing.md

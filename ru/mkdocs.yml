@@ -31,6 +31,7 @@ nav:
 
   - 'Архитектура v3':
     - 'Модель тайла': arch/tiles.md
+    - 'Паттерны личности': arch/personality-patterns.md
     - 'VSB и BUS16': arch/bus.md
     - 'Такт runtime': arch/phase.md
     - 'Граф допуска': arch/routing.md

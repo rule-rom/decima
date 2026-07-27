@@ -350,6 +350,46 @@ code, pre {
     background: transparent;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.md-grid,
+.md-main__inner,
+.md-content,
+.md-content__inner,
+.md-typeset {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.md-typeset {
+    overflow-wrap: anywhere;
+}
+
+.md-typeset table:not([class]) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.md-typeset pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.md-header__title {
+    min-width: 0;
+}
+
+.md-header__topic {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3 {
@@ -406,6 +446,11 @@ code, pre {
    ================================ */
 
 @media (max-width: 768px) {
+    .md-content__inner {
+        margin-right: 0.8rem;
+        margin-left: 0.8rem;
+    }
+
     .rom-hero-title {
         font-size: 1.5rem;
     }

@@ -30,6 +30,7 @@ nav:
 
   - 'Architecture v3':
     - 'Tile model': arch/tiles.md
+    - 'Personality patterns': arch/personality-patterns.md
     - 'VSB and BUS16': arch/bus.md
     - 'Runtime tick': arch/phase.md
     - 'Permission graph': arch/routing.md
