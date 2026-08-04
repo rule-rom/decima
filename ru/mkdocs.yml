@@ -25,7 +25,8 @@ extra:
 
 nav:
   - 'Главная':
-    - 'Обзор v3': index.md
+    - 'Начать здесь': index.md
+    - 'Лаборатория паттернов': pattern-lab.md
     - 'IDE': tools/ide.md
     - 'Benchmark': bench/index.md
 

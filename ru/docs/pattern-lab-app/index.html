@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>DECIMA-8 — лаборатория паттернов</title>
+  <meta name="description" content="Интерактивная WebGL-лаборатория паттернов личности Decima-8.">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.min.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-header">
+      <div>
+        <a class="brand" href="../" target="_top">DECIMA-8</a>
+        <span class="header-separator">/</span>
+        <span>лаборатория паттернов</span>
+      </div>
+      <div class="runtime-state"><i></i><span>причинная симуляция v3</span></div>
+    </header>
+
+    <nav class="pattern-nav" aria-label="Паттерны личности" id="pattern-nav"></nav>
+
+    <main class="lab-main">
+      <section class="stage" aria-label="WebGL-сцена Decima-8">
+        <div id="scene" class="scene"></div>
+        <div class="stage-title">
+          <span id="pattern-index">01</span>
+          <div>
+            <h1 id="pattern-title">Интегратор с утечкой</h1>
+            <p id="pattern-lead"></p>
+          </div>
+        </div>
+        <div class="stage-legend" aria-hidden="true">
+          <span><i class="legend-vsb"></i>общий VSB</span>
+          <span><i class="legend-active"></i>ACTIVE</span>
+          <span><i class="legend-fire"></i>FIRE</span>
+        </div>
+        <div class="webgl-fallback" id="webgl-fallback" hidden>
+          WebGL недоступен. Текстовое состояние симуляции остаётся в инспекторе.
+        </div>
+      </section>
+
+      <aside class="inspector" aria-label="Инспектор паттерна">
+        <section class="metric-strip">
+          <div><span>такт</span><strong id="metric-frame">0</strong></div>
+          <div><span>FIRE</span><strong id="metric-fires">0</strong></div>
+          <div><span>reset</span><strong id="metric-resets">0</strong></div>
+        </section>
+
+        <section class="explanation">
+          <p class="eyebrow">Смысл органа</p>
+          <p id="pattern-description"></p>
+          <p class="equation" id="pattern-equation"></p>
+        </section>
+
+        <section class="tile-state">
+          <div class="section-heading">
+            <p class="eyebrow">Состояние</p>
+            <span id="vsb-levels">VSB 0 0 0 0 0 0 0 0</span>
+          </div>
+          <div id="tile-list" class="tile-list"></div>
+        </section>
+
+        <section class="event-log">
+          <p class="eyebrow">Журнал</p>
+          <ol id="event-log"></ol>
+        </section>
+
+        <a class="detail-link" id="detail-link" href="../arch/personality-patterns/" target="_top">
+          Техническое описание <span>→</span>
+        </a>
+      </aside>
+    </main>
+
+    <footer class="controls">
+      <div class="transport" aria-label="Управление симуляцией">
+        <button id="play" type="button" title="Запустить или остановить" aria-label="Запустить или остановить">▶</button>
+        <button id="step" type="button" title="Один такт" aria-label="Один такт">▸|</button>
+        <button id="reset" type="button" title="Сбросить состояние" aria-label="Сбросить состояние">↺</button>
+      </div>
+      <label>
+        <span>Сила входа</span>
+        <input id="gain" type="range" min="50" max="150" value="100" step="5">
+        <output id="gain-value">1.00×</output>
+      </label>
+      <label>
+        <span>Утечка</span>
+        <input id="decay" type="range" min="0" max="200" value="100" step="10">
+        <output id="decay-value">1.00×</output>
+      </label>
+      <div class="speed" role="group" aria-label="Скорость">
+        <button type="button" data-speed="1200">медленно</button>
+        <button type="button" data-speed="700" class="is-active">обычно</button>
+        <button type="button" data-speed="320">быстро</button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
