@@ -27,6 +27,35 @@ in16[t][lane] = clamp15(VSB_INGRESS16[lane]);
 
 The tile matrix does not deliver data. It defines that tile's sensitivity to the eight strings of the common stream.
 
+## Scaling boundary
+
+Eight lanes, Level16, and the current weight and threshold widths are deliberate choices. They define the working point of DECIMA-8, not a claim that every future machine must keep exactly the same dimensions.
+
+The architecture permits parametric expansion:
+
+- more lanes on the shared VSB;
+- more distinguishable levels per lane;
+- wider weights, thresholds, and accumulators;
+- more tiles and domains.
+
+These changes increase machine width and resolution while preserving its central contract: one common telegraph presents the current frame to every ACTIVE tile, each tile owns only local state, and neighbour edges carry permission to compute rather than values.
+
+```mermaid
+flowchart LR
+    V["shared VSB telegraph"] --> T1["flat tile A"]
+    V --> T2["flat tile B"]
+    V --> TN["flat tile N"]
+    T1 -. "local permission only" .-> T2
+
+    S["more lanes, levels,<br/>weight bits, and tiles"] --> V
+```
+
+**A deep tile is not parametric scaling.** Once the minimal tile contains hidden layers, a private value path, or a sequence of internal compute nodes, it becomes a small network. Complexity moves from the composition of simple elements in a common medium into the element itself, changing tile atomicity, causality, and the role of the personality architect.
+
+Such a variant can be researched, but it requires a separate architectural contract and is not merely a larger DECIMA-8. Hierarchy is cleaner when built from explicitly separated flat contours instead of hiding another network inside the base tile.
+
+The physical substrate does not define this boundary. SRAM, register logic, or a future memristive implementation can host Decima as long as they preserve the common telegraph and the simple local-integrator model.
+
 ## Accumulation
 
 For an unlocked tile:
