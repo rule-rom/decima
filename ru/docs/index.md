@@ -7,7 +7,7 @@ DECIMA-8 нужна там, где смысл находится не в одн�
 Это детерминированная нейроморфная архитектура. При одинаковых входе, личности, начальном состоянии и политике сброса она оставляет одинаковый след на любом совместимом runtime.
 
 <div class="d8-start-actions">
-  <a class="md-button md-button--primary" href="/pattern-lab/">Открыть лабораторию паттернов</a>
+  <a class="md-button md-button--primary" href="/ru/pattern-lab/">Открыть лабораторию паттернов</a>
   <a class="md-button" href="arch/tiles/">Разобрать один тайл</a>
 </div>
 
@@ -97,7 +97,7 @@ Runtime ничего из этого не придумывает. Он дете�
 ## С чего начать
 
 <div class="d8-reading-path">
-  <a href="/pattern-lab/">
+  <a href="/ru/pattern-lab/">
     <span>01</span>
     <strong>Потрогать паттерны</strong>
     <small>Подайте импульс, измените decay, выполните reset и сравните реакцию.</small>
